@@ -1,23 +1,26 @@
 
-#include "slabel.h"
+#include "myqlabel.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-SLabel::SLabel(QWidget *parent)
+MyQLabel::MyQLabel(QWidget *parent)
     : QLabel(parent)
+    , m_offs()
 {
 
 }
 
-SLabel::~SLabel()
+MyQLabel::~MyQLabel()
 {
 
 }
 
-void SLabel::mousePressEvent(QMouseEvent *event)
+void MyQLabel::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton)
     {
+        m_offs = event->pos();
+
         QString s(QString("%1:pos:x:%2:y:%3")
                   .arg(__FUNCTION__)
                   .arg(event->x())
@@ -30,7 +33,7 @@ void SLabel::mousePressEvent(QMouseEvent *event)
     }
 }
 
-void SLabel::mouseReleaseEvent(QMouseEvent *event)
+void MyQLabel::mouseReleaseEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton)
     {
@@ -46,7 +49,7 @@ void SLabel::mouseReleaseEvent(QMouseEvent *event)
 
         if (this->parentWidget()->rect().contains(p))
         {
-            this->move(p);
+            this->move(p - m_offs);
         }
 
         this->setForegroundRole(QPalette::Foreground);

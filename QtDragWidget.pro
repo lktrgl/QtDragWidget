@@ -26,11 +26,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-        slabel.cpp
+        myqlabel.cpp
 
 HEADERS += \
         mainwindow.h \
-        slabel.h
+        myqlabel.h
 
 FORMS += \
         mainwindow.ui

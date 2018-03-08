@@ -4,16 +4,19 @@
 #include <QLabel>
 #include <QMouseEvent>
 
-class SLabel : public QLabel
+class MyQLabel : public QLabel
 {
     Q_OBJECT
 
 public:
-    explicit SLabel(QWidget *parent = 0);
-    ~SLabel();
+    explicit MyQLabel(QWidget *parent = 0);
+    ~MyQLabel();
 
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
+
+private:
+    QPoint m_offs;
 };
 
 #endif // SLABEL_H
